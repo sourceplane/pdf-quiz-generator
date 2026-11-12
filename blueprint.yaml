@@ -43,7 +43,7 @@ spec:
       - layer: Edge
         items: [web]
       - layer: AI
-        items: [Workers AI (the Worker's AI binding), Gemini (optional, your key)]
+        items: [Workers AI through the AI binding, Gemini with an optional key]
       - layer: Delivery
         items: [GitHub Actions, OpenNext, wrangler]
     outcome:
