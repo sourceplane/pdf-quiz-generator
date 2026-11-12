@@ -8,7 +8,7 @@ landing.**
 
 | | |
 |---|---|
-| Status | In progress — PQ0 on main |
+| Status | In progress — PQ1 on main: the site runs on Workers |
 | Upstream | [vercel-labs/ai-sdk-preview-pdf-support](https://github.com/vercel-labs/ai-sdk-preview-pdf-support) (Apache-2.0, © 2024 Vercel), at `2216bb6` (2026-04-25) — Vercel's "PDF to Quiz Generator" template |
 | Reference | [microcms-blog](https://github.com/sourceplane/microcms-blog) — the same scaffolding, tests, bootstrap, an optional key pushed to the Worker after the build, and the e2e's own Worker entry; [nuxt-ai-editor](https://github.com/sourceplane/nuxt-ai-editor) — Workers AI through the binding with an optional key |
 | Key | `PQ` |
