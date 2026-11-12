@@ -1,0 +1,19 @@
+apiVersion: orun.io/v1
+kind: TaskContract
+metadata:
+  name: PQ-2
+  title: "The quiz on Workers"
+spec:
+  goal: Vercel's PDF to Quiz Generator runs on Cloudflare Workers + Static Assets through OpenNext, its quiz streamed from Workers AI through the Worker's own binding with no key (Gemini with the owner's optional key), with its tests and a README that says how it maps to Vercel
+  affects:
+    - apps/web
+    - tests/web
+    - tooling/wire
+    - pnpm-lock.yaml
+    - pnpm-workspace.yaml
+    - README.md
+    - .gitignore
+  doneWhen:
+    - pnpm typecheck, lint, test and build are green
+    - wrangler dev serves the page, and a real PDF uploaded to the quiz route streams four questions built from its text from a Workers AI stand-in, the first whole before the stream ends; with a Google key, the same quiz from a Gemini stand-in
+  gates: []

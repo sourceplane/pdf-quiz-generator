@@ -1,0 +1,14 @@
+# pdf-quiz-generator — risks and open questions
+
+| ID | Risk | State | Notes |
+|---|---|---|---|
+| PQ-A | `baseline-v1` is not yet proven live | OPEN | Proven offline in Baseline CI: the offline bootstrap with the blueprint's own hooks, the stage lane's own steps in a staged job tree (with the Google key set and kept out of the build), the dry run binding Workers AI as AI, the Worker served by `wrangler dev` and smoke-tested with the component's own command. A console bootstrap closes it, including the first deploy with an AI binding and the first `wrangler secret bulk` from a deploy lane |
+| PQ-B | No real model has answered | OPEN | The quiz and the title are proven against in-process stand-ins in Workers AI's and Gemini's own shapes. Unproven: that GLM-4.7-Flash follows the schema-in-prompt instruction (four questions, four options, a letter) and JSON mode for the title, and how `toMarkdown` reads real PDFs. A quiz from a real PDF on a deployment, on each model, closes it; if GLM-4.7-Flash drifts, `WORKERS_AI_MODEL` in `lib/ai.ts` is the one line to change |
+| PQ-C | Workers Free's CPU limit | WATCH | 10 ms of CPU a request on Free: the JSON parse of a multi-megabyte upload and its base64 decode may exceed it (error 1102). The README's "Limits" says so; Workers Paid gives 30 s |
+| PQ-D | Setting a secret redeploys nothing | ACCEPTED | The deploy is what pushes the Google key to the Worker; the owner redeploys by hand or with the `# orun: redeploy` stamp in `apps/web/component.yaml` (README, "Use Google's Gemini") |
+| PQ-E | The page has no sign-in | ACCEPTED | As upstream: anyone who reaches it makes quizzes, billed to the Cloudflare account (Workers AI) or the Google key. Access or a rate limit is the owner's next step |
+| PQ-F | `streamObject` is deprecated in the AI SDK 7; `createAI` is new | WATCH | `ai` 7.0.170, `@ai-sdk/react` 4.0.174, `@ai-sdk/provider` 4.0.37, `@ai-sdk/google` 4.0.118 and `agents` 0.31.0 are pinned and move together. `agents`' Vite plugin peers `vite@^8`, which tests/web's vitest does not provide; the provider subpath the app imports does not use it |
+| PQ-G | Next and OpenNext move together | WATCH | OpenNext 1.20.16 accepts Next `>=15.5.29 <16`; a later OpenNext may raise the floor |
+| PQ-H | Only the first 200,000 characters of a document reach Workers AI | ACCEPTED | About 50,000 tokens, inside GLM-4.7-Flash's 131,072 with room for the answer. Gemini reads the whole PDF |
+| PQ-I | stack-tectonic 0.19.0 kept | ACCEPTED | 0.20.0's lane-scoped install would meet Turbopack on a Next 16 move; on 15.5 it is harmless, and the pin matches the family |
+| PQ-J | Gemini 2.5 for the retired 1.5 | ACCEPTED | `gemini-2.5-pro` and `gemini-2.5-flash` are the stable successors; served only with the owner's key, unit-tested and e2e-tested against a stand-in |

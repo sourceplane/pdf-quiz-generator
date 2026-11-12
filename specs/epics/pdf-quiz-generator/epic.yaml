@@ -1,0 +1,32 @@
+# The epic's declaration. metadata.name equals the directory name; metadata.key
+# is the task-key prefix this epic reserves (PQ → PQ-1, PQ-2, …). Owner, target
+# date and health are the platform's — never written here.
+apiVersion: orun.io/v1
+kind: Epic
+metadata:
+  name: pdf-quiz-generator
+  key: PQ
+spec:
+  title: "Vercel's PDF to Quiz Generator on Cloudflare Workers"
+  summary: "Vercel's PDF to Quiz Generator — upload a PDF, get a four-question multiple-choice quiz streamed back, then the quiz, its score and its review — runs on Cloudflare Workers + Static Assets through @opennextjs/cloudflare, the PDF converted and the quiz written by Workers AI through the Worker's own binding with no key (Gemini with the owner's optional key), inside the Cirrus baseline's repository conventions, and becomes an Orun baseline that takes a new quiz app from nothing to live on stage and prod in one landing."
+  state: started
+  milestones:
+    - name: "PQ0 — the spec"
+      exitCriteria:
+        - "the repository is born with its intent, CI, tooling and spec index, and this doc set and the task contracts are on main"
+      tasks: [PQ-1]
+    - name: "PQ1 — the quiz on Workers"
+      exitCriteria:
+        - "apps/web is the upstream template, built by next build on Next.js 15.5, then by OpenNext into one Worker with Static Assets bound to Workers AI"
+        - "the quiz route converts the PDF with env.AI.toMarkdown and streams the quiz from @cf/zai-org/glm-4.7-flash through createAI (agents/models/ai-sdk), the schema in the prompt; with a Google key, Gemini reads the PDF itself; the key is read per request and never built in"
+        - "the route refuses a missing file (400), a file that is not a PDF (415), one over 5 MB (413) and one with no text (422) before any model is asked"
+        - "`pnpm typecheck`, `pnpm lint`, `pnpm test` and `pnpm build` are green"
+        - "`wrangler dev` serves the page, and a real PDF uploaded to the quiz route streams four questions built from its text from an in-process Workers AI, the first whole before the stream ends; with a Google key, the same from an in-process Gemini"
+        - "the README says how to run, test, preview and deploy it, how to use Gemini, and how every Vercel piece maps to Cloudflare"
+      tasks: [PQ-2]
+    - name: "PQ2 — a baseline"
+      exitCriteria:
+        - "blueprint.yaml (the console card) and repo-blueprint.yaml (the build) take a new quiz app from nothing to live on stage and prod in one landing, then record it"
+        - "an app built from it carries the app only, renamed throughout to its own name, repository and Worker, with the template's links, Google's variable name and the Workers AI binding intact"
+        - "Baseline CI is green: contract tests (the deployment record rendered without PyYAML among them), generated component docs, the blueprint read by the pinned orun, the leak gate, the offline bootstrap and the end-to-end tier"
+      tasks: [PQ-3]
