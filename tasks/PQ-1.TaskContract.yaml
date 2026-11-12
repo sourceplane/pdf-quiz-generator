@@ -1,0 +1,15 @@
+apiVersion: orun.io/v1
+kind: TaskContract
+metadata:
+  name: PQ-1
+  title: "The spec"
+spec:
+  goal: The pdf-quiz-generator repository is born with its intent, CI, tooling and spec index, and the pdf-quiz-generator epic — declaration, doc set and task contracts — is on main
+  affects:
+    - specs/epics/pdf-quiz-generator
+    - specs/epics/README.md
+    - tasks
+  doneWhen:
+    - epic.yaml, README, design, implementation plan, risks and status are on main
+    - the three task contracts exist
+  gates: []
