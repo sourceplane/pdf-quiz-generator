@@ -9,7 +9,7 @@ metadata:
 spec:
   title: "Vercel's PDF to Quiz Generator on Cloudflare Workers"
   summary: "Vercel's PDF to Quiz Generator — upload a PDF, get a four-question multiple-choice quiz streamed back, then the quiz, its score and its review — runs on Cloudflare Workers + Static Assets through @opennextjs/cloudflare, the PDF converted and the quiz written by Workers AI through the Worker's own binding with no key (Gemini with the owner's optional key), inside the Cirrus baseline's repository conventions, and becomes an Orun baseline that takes a new quiz app from nothing to live on stage and prod in one landing."
-  state: started
+  state: completed
   milestones:
     - name: "PQ0 — the spec"
       exitCriteria:

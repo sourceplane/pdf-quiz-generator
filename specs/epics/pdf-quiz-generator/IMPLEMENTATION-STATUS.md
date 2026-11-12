@@ -4,7 +4,12 @@
 |---|---|---|
 | PQ0 — the spec | ✅ | the repository's first commit, PQ-1 |
 | PQ1 — the quiz on Workers | ✅ | PQ-2 |
-| PQ2 — a baseline | planned | PQ-3 |
+| PQ2 — a baseline | ✅ | PQ-3, tagged `baseline-v1` |
+
+Upstream: vercel-labs/ai-sdk-preview-pdf-support @ `2216bb67fb01a1ebb89a6352ba09ee439a5eecb5`.
+Licence: Apache-2.0, as the root `LICENSE` reads ("Copyright 2024 Vercel, Inc.
+Licensed under the Apache License, Version 2.0 …"; GitHub shows NOASSERTION;
+package.json has no `license`). It ships as `apps/web/LICENSE`.
 
 ## Departures from the upstream template
 

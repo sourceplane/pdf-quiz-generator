@@ -1,0 +1,9 @@
+{
+  "_comment": "THIS TREE'S OWN IDENTITY — the FROM side of every rebrand. tooling/rebrand/rebrand.mjs reads it to know what to rename AWAY from; a product's identity is the --values file, which is the TO side. Change a value here only together with the tree: these strings must be what the tree actually contains, or the rename silently misses and the product ships carrying this baseline's name. `productName` is the SITE_NAME seam in apps/web/app/site.ts (the upstream page's own heading, `PDF Quiz Generator`); `domain` and `subdomain` are placeholders, because this baseline has never deployed under a name of its own; `githubOwner` is the owner in the source links the docs carry. The upstream template's links (vercel-labs/ai-sdk-preview-pdf-support, its Vercel template page) do not carry this slug, so no rule touches them.",
+  "slug": "pdf-quiz-generator",
+  "pascal": "PdfQuizGenerator",
+  "productName": "PDF Quiz Generator",
+  "domain": "pdf-quiz-generator.example.com",
+  "subdomain": "your-workers-subdomain",
+  "githubOwner": "sourceplane"
+}
